@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="deK-wm-fUY" customClass="MarkerInfoWindow" customModule="transit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gf-MU-ol8">
+                    <rect key="frame" x="8" y="8" width="184" height="84"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="3Gf-MU-ol8" firstAttribute="trailing" secondItem="deK-wm-fUY" secondAttribute="trailingMargin" id="8II-Jx-VwR"/>
+                <constraint firstItem="3Gf-MU-ol8" firstAttribute="bottom" secondItem="deK-wm-fUY" secondAttribute="bottomMargin" id="RRS-Yf-oIk"/>
+                <constraint firstItem="3Gf-MU-ol8" firstAttribute="leading" secondItem="deK-wm-fUY" secondAttribute="leadingMargin" id="WKl-wR-su2"/>
+                <constraint firstItem="3Gf-MU-ol8" firstAttribute="top" secondItem="deK-wm-fUY" secondAttribute="topMargin" id="ZAp-Mm-iMo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="infoLabel" destination="3Gf-MU-ol8" id="55j-pF-Z2c"/>
+            </connections>
+            <point key="canvasLocation" x="510" y="239"/>
+        </view>
+    </objects>
+</document>
