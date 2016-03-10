@@ -22,12 +22,15 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add menu button to side menu
         addSideMenu(menuButton)
+        
+        self.view.backgroundColor = purple
         
         let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("SearchResultsTableViewController") as! SearchResultsTableViewController
         searchResultsController = UISearchController(searchResultsController: locationSearchTable)

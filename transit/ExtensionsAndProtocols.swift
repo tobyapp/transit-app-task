@@ -80,6 +80,16 @@ extension UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+
+        // Remove 'hairline' from navigaiton bar
+//        for parent in self.navigationController!.navigationBar.subviews {
+//            for childView in parent.subviews {
+//                if(childView is UIImageView) {
+//                    childView.removeFromSuperview()
+//                }
+//            }
+//        }
         
     }
+
 }
