@@ -22,6 +22,8 @@
 		52B693B01C906B500028D3D3 /* ProviderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B693AF1C906B500028D3D3 /* ProviderViewController.swift */; };
 		52B693B41C90AB090028D3D3 /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B693B31C90AB090028D3D3 /* SearchResultsTableViewController.swift */; };
 		52B693B61C917CB50028D3D3 /* ExtensionsAndProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B693B51C917CB50028D3D3 /* ExtensionsAndProtocols.swift */; };
+		52B693B91C91D3290028D3D3 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B693B81C91D3290028D3D3 /* FAQViewController.swift */; };
+		52B693BB1C91D43E0028D3D3 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B693BA1C91D43E0028D3D3 /* ContactViewController.swift */; };
 		52BC02ED1C8DB7FC00D4F4E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC02EC1C8DB7FC00D4F4E3 /* AppDelegate.swift */; };
 		52BC02EF1C8DB7FC00D4F4E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BC02EE1C8DB7FC00D4F4E3 /* ViewController.swift */; };
 		52BC02F21C8DB7FC00D4F4E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52BC02F01C8DB7FC00D4F4E3 /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		52B693AF1C906B500028D3D3 /* ProviderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderViewController.swift; sourceTree = "<group>"; };
 		52B693B31C90AB090028D3D3 /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 		52B693B51C917CB50028D3D3 /* ExtensionsAndProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsAndProtocols.swift; sourceTree = "<group>"; };
+		52B693B81C91D3290028D3D3 /* FAQViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		52B693BA1C91D43E0028D3D3 /* ContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		52BC02E91C8DB7FC00D4F4E3 /* transit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = transit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52BC02EC1C8DB7FC00D4F4E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52BC02EE1C8DB7FC00D4F4E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		52B693B71C91CE260028D3D3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				52BC02F01C8DB7FC00D4F4E3 /* Main.storyboard */,
+				52125FB11C901D1600BAD6D9 /* MarkerInfoWindow.xib */,
+				52BC02F51C8DB7FD00D4F4E3 /* LaunchScreen.storyboard */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
 		52BC02E01C8DB7FC00D4F4E3 = {
 			isa = PBXGroup;
 			children = (
@@ -112,16 +126,16 @@
 				5279C7AD1C8DCBAC00DA9A1C /* APIkeys.swift */,
 				52BC02EE1C8DB7FC00D4F4E3 /* ViewController.swift */,
 				52125FB51C901E2F00BAD6D9 /* MarkerInfoWindow.swift */,
-				52125FB11C901D1600BAD6D9 /* MarkerInfoWindow.xib */,
-				52BC02F01C8DB7FC00D4F4E3 /* Main.storyboard */,
+				52B693B71C91CE260028D3D3 /* UI */,
 				52B693AF1C906B500028D3D3 /* ProviderViewController.swift */,
+				52B693BA1C91D43E0028D3D3 /* ContactViewController.swift */,
+				52B693B81C91D3290028D3D3 /* FAQViewController.swift */,
 				5279C7AF1C8DFAED00DA9A1C /* MapViewController.swift */,
 				52B693B31C90AB090028D3D3 /* SearchResultsTableViewController.swift */,
 				52125FAD1C8F8CA900BAD6D9 /* oldCode.swift */,
 				52B693B51C917CB50028D3D3 /* ExtensionsAndProtocols.swift */,
 				5279C7B11C8E050400DA9A1C /* RetrieveData.swift */,
 				52BC02F31C8DB7FD00D4F4E3 /* Assets.xcassets */,
-				52BC02F51C8DB7FD00D4F4E3 /* LaunchScreen.storyboard */,
 				52BC02F81C8DB7FD00D4F4E3 /* Info.plist */,
 			);
 			path = transit;
@@ -269,6 +283,8 @@
 				52B693B01C906B500028D3D3 /* ProviderViewController.swift in Sources */,
 				52BC02EF1C8DB7FC00D4F4E3 /* ViewController.swift in Sources */,
 				52BC02ED1C8DB7FC00D4F4E3 /* AppDelegate.swift in Sources */,
+				52B693B91C91D3290028D3D3 /* FAQViewController.swift in Sources */,
+				52B693BB1C91D43E0028D3D3 /* ContactViewController.swift in Sources */,
 				5279C7B21C8E050400DA9A1C /* RetrieveData.swift in Sources */,
 				52B693B61C917CB50028D3D3 /* ExtensionsAndProtocols.swift in Sources */,
 				52B693B41C90AB090028D3D3 /* SearchResultsTableViewController.swift in Sources */,

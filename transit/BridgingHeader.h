@@ -17,5 +17,6 @@
 #import <SVGKit/SVGKExporterNSData.h>
 #import <SVGKit/SVGKExporterUIImage.h>
 #import <SVGKit/SVGKImage+CGContext.h>
+#import <SWRevealViewController/SWRevealViewController.h>
 
 #endif /* BridgingHeader_h */

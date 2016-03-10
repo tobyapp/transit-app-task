@@ -51,3 +51,35 @@ protocol PassDataProtocol {
     func returnDataFromSearch(data: [String: AnyObject])
 }
 
+
+extension UIViewController {
+    
+    // Default color scheme across application
+    var purple: UIColor {
+        return UIColor(red: 103/255, green: 58/255, blue: 183/255, alpha: 1)
+    }
+    
+    // Adds side menu to view controllers
+    func addSideMenu(menuButton : UIBarButtonItem!) {
+        if self.revealViewController() != nil {
+            menuButton.target = self.revealViewController()
+            menuButton.action = "revealToggle:"
+            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+            self.revealViewController().rearViewRevealWidth = CGFloat(200)
+            self.revealViewController().frontViewShadowRadius = CGFloat(50)
+            self.revealViewController().frontViewShadowOffset = CGSizeMake(CGFloat(0), CGFloat(5))
+            self.revealViewController().frontViewShadowOpacity = CGFloat(1)
+            self.revealViewController().frontViewShadowColor = UIColor.darkGrayColor()
+            changeColorScheme()
+        }
+    }
+    
+    // Change color scheme of navigation menu etc
+    func changeColorScheme(){
+        self.navigationController?.navigationBar.barTintColor = purple
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        
+    }
+}

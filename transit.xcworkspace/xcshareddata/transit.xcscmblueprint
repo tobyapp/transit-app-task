@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B06491635B72E2E688038607982AA2D2E5ACE116",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "DFFD488C1D7EC13C240FB6405B1C687602438AAC" : 0,
+    "B06491635B72E2E688038607982AA2D2E5ACE116" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B4C97698-3F79-4D62-807F-17F05C071B21",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "DFFD488C1D7EC13C240FB6405B1C687602438AAC" : "",
+    "B06491635B72E2E688038607982AA2D2E5ACE116" : "transit\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "transit",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "transit.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tobyapp\/transit-app-task.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B06491635B72E2E688038607982AA2D2E5ACE116"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/tobyapp\/test.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "DFFD488C1D7EC13C240FB6405B1C687602438AAC"
+    }
+  ]
+}

@@ -20,11 +20,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
     var plottedByRoute = false
     
     @IBOutlet weak var mapView: GMSMapView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add menu button to side menu
+        addSideMenu(menuButton)
         
         let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("SearchResultsTableViewController") as! SearchResultsTableViewController
         searchResultsController = UISearchController(searchResultsController: locationSearchTable)
@@ -187,7 +190,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         infoWindow.infoLabel.text = "\(travelMode) to \(locaitonName) @ \(formattedDate)"
             
         return infoWindow
-        }
+        
+    }
 
     // format time and date from JSON
     func formatDate(dateTime: String) -> String {
