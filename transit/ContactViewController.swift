@@ -6,6 +6,8 @@
 //  Copyright © 2016 Toby Applegate. All rights reserved.
 //
 
+// View controller for the contact view, can add extra functionality later if need to
+
 import UIKit
 
 class ContactViewController: UIViewController {

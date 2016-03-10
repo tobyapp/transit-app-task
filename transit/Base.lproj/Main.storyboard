@@ -376,7 +376,7 @@ On a spontaneous adventure and not sure where you want to go? Then just click ei
         <!--Contant-->
         <scene sceneID="oD3-k4-Evs">
             <objects>
-                <viewController id="2sk-po-1f7" customClass="ContactViewController" customModule="hitch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2sk-po-1f7" customClass="ContactViewController" customModule="transit" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z30-6y-v4h"/>
                         <viewControllerLayoutGuide type="bottom" id="zJh-BY-tns"/>
