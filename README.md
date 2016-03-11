@@ -11,4 +11,5 @@ For this application to work:
 ## App information
 Some information with regards to the application:
 - Everything was done to be as dynamic as possible and not hard coded. However, in the *ProviderInformationTableViewController.swift* file, when parsing any extra information with regards to the provider's properties in the JSON file, this was semi-hard coded due to time and complexity.
-- There is information on the usage of the app in the *FAQ* section within the application
+- There is more information on the usage of the app in the *FAQ* section within the application
+- Naming conventions within the application (such as variable names) where chosen to coincide with naming conventions in the JSON file
