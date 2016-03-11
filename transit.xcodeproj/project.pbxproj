@@ -103,7 +103,6 @@
 			isa = PBXGroup;
 			children = (
 				5279C7B11C8E050400DA9A1C /* RetrieveData.swift */,
-				52B693B51C917CB50028D3D3 /* ExtensionsAndProtocols.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -111,9 +110,10 @@
 		527799A71C92E00900432A16 /* Extra Files */ = {
 			isa = PBXGroup;
 			children = (
-				5279C7AD1C8DCBAC00DA9A1C /* APIkeys.swift */,
 				52BC02EC1C8DB7FC00D4F4E3 /* AppDelegate.swift */,
 				5279C7C41C8F595B00DA9A1C /* BridgingHeader.h */,
+				5279C7AD1C8DCBAC00DA9A1C /* APIkeys.swift */,
+				52B693B51C917CB50028D3D3 /* ExtensionsAndProtocols.swift */,
 				52BC02F31C8DB7FD00D4F4E3 /* Assets.xcassets */,
 				52BC02F81C8DB7FD00D4F4E3 /* Info.plist */,
 			);

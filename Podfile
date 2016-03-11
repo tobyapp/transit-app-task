@@ -11,11 +11,8 @@ pod 'GoogleMaps'
 
 pod 'Alamofire'
 
-pod 'AlamofireImage', '~> 2.0'
-
 pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
 
 pod 'SWRevealViewController'
 
 end
-
