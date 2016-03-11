@@ -1,8 +1,8 @@
 //
 //  ContactViewController.swift
-//  hitch
+//  transit
 //
-//  Created by Toby Applegate on 17/01/2016.
+//  Created by Toby Applegate on 10/03/2016.
 //  Copyright © 2016 Toby Applegate. All rights reserved.
 //
 
@@ -16,24 +16,13 @@ class ContactViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Used to display side menu (using SWRevealViewController)
         self.addSideMenu(menuButton)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

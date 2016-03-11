@@ -34,7 +34,7 @@ class RetrieveData {
                 
                 for route in routes {
                     for (name, provider) in providers {
-                        
+
                         // return provider of route and info about provider from 'providers' JSON
                         // checks both matches to return the right information about each route
                         if route["provider"].stringValue == name {
@@ -66,7 +66,7 @@ class RetrieveData {
                 }
                 
                 for route in routes {
-                    for (name, provider) in providers {
+                    for (name, _) in providers {
                         
                         // return provider of route and info about provider from 'providers' JSON
                         // checks both matches to return the right information about each route

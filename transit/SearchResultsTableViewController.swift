@@ -4,7 +4,8 @@
 //
 //  Created by Toby Applegate on 09/03/2016.
 //
-//
+
+// VC to display routes avalible for selection
 
 import UIKit
 import SVGKit
@@ -15,9 +16,8 @@ class SearchResultsTableViewController: UITableViewController {
     let routeArray = [String]()
     let routeData = RetrieveData()
     var routeAndProvidersInfo = [Dictionary<String, AnyObject>]()
+    var providerInfo = [JSON]()
     var passDataDelegate: PassDataProtocol? = nil
-    
-    let x  = [["hello" : "hello", "test": "test", "json" : 3]] //continue here, to each cell pass data like image url etc and also pass JSON for that route then on map view take the JSON and parse it
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +25,11 @@ class SearchResultsTableViewController: UITableViewController {
         routeData.getRoutes({route, providerAttributes in
             
             // Parse JSON
-            let parsedData = self.parseJSON(route, providerData: providerAttributes)
+            let (parsedData, providerInformation) = self.parseJSON(route, providerData: providerAttributes)
             
-            // Add parsed data to dict
+            // Add parsed data to dict and array
             self.routeAndProvidersInfo.append(parsedData)
-
+            self.providerInfo.append(providerInformation)
 
             //reloads tableview on main thread after all data is parsed
             dispatch_async(dispatch_get_main_queue()) {
@@ -40,33 +40,29 @@ class SearchResultsTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        let infoDict = routeAndProvidersInfo[indexPath.row]
-        //print(infoDict)
-        passDataDelegate?.returnDataFromSearch(infoDict)
-            
+        // Route data corrisponding to the cell selected
+        let routeData = routeAndProvidersInfo[indexPath.row]
+        
+        // Provider data corrisponding to the cell selected
+        let providerData = providerInfo[indexPath.row]
 
-            
-        //handleMapSearchDelegate?.dropPinZoomIn(selectedItem)
+        // Pass data back to map VC
+        passDataDelegate?.returnDataFromSearch(routeData, providerData: providerData)
+        
         dismissViewControllerAnimated(true, completion: nil)
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return routeAndProvidersInfo.count
     }
-
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -76,7 +72,14 @@ class SearchResultsTableViewController: UITableViewController {
         let infoDict = routeAndProvidersInfo[indexPath.row]
         
         cell.textLabel!.text = "\(infoDict["transportType"]!) by \(infoDict["provider"]!)"
-        cell.detailTextLabel?.text =  "Will cost \(infoDict["currency"]!)\(infoDict["price"]!)"
+        
+        // If equals EUR then no cost was given in JSON file
+        if "\(infoDict["currency"]!)" == "EUR" {
+            cell.detailTextLabel?.text = "No cost avalible"
+        }
+        else {
+            cell.detailTextLabel?.text =  "Will cost \(infoDict["currency"]!)\(infoDict["price"]!)"
+        }
 
         // Access data form URL
         let url = NSURL(string: infoDict["imageURL"]! as! String)
@@ -106,7 +109,7 @@ class SearchResultsTableViewController: UITableViewController {
     }
 
     // Function to parse JSON
-    func parseJSON(routeData: JSON, providerData: JSON) -> [String:AnyObject] {
+    func parseJSON(routeData: JSON, providerData: JSON) -> ([String:AnyObject], JSON) {
 
         // Dict to hold all the information
         var markerInfoDict = [String:AnyObject]()
@@ -117,10 +120,11 @@ class SearchResultsTableViewController: UITableViewController {
         let price = routeData["price"]["amount"].stringValue
         let provider  = routeData["provider"].stringValue
         let imageURL = providerData["provider_icon_url"].stringValue
-        
+        let providerInformation = routeData["properties"]
+
         // Assign JSON object to each route in table view so when a cell is selected, the JSON corrisponding to that route is passed abck to the MapVC
         let segments = routeData["segments"].arrayObject
-        
+
         // Put all values in dict
         markerInfoDict["transportType"] = transportType
         markerInfoDict["currency"] = currency
@@ -129,15 +133,7 @@ class SearchResultsTableViewController: UITableViewController {
         markerInfoDict["imageURL"] = imageURL
         markerInfoDict["segments"] = segments
 
-        return markerInfoDict
+        return (markerInfoDict, providerInformation)
     }
 
-
-
-}
-
-extension SearchResultsTableViewController : UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        
-    }
 }

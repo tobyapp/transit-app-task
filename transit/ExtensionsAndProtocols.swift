@@ -7,10 +7,10 @@
 //
 
 import Foundation
+import SwiftyJSON
 
-
+// Convert currency abbreviation to symbol
 extension String {
-    // Convert currency abbreviation to symbol
     func currencyFormat() -> String {
         switch self {
         case "EUR":
@@ -25,8 +25,8 @@ extension String {
     }
 }
 
+// convert HEX string to RGB color to be used for polyline color
 extension UIColor {
-    // convert HEX string to RGB color to be used for polyline color
     convenience init(hexString: String) {
         let hex = hexString.stringByTrimmingCharactersInSet(NSCharacterSet.alphanumericCharacterSet().invertedSet)
         var int = UInt32()
@@ -48,7 +48,7 @@ extension UIColor {
 
 // Protocol to send data between VC's
 protocol PassDataProtocol {
-    func returnDataFromSearch(data: [String: AnyObject])
+    func returnDataFromSearch(routeData: [String: AnyObject], providerData: JSON)
 }
 
 
@@ -59,7 +59,7 @@ extension UIViewController {
         return UIColor(red: 103/255, green: 58/255, blue: 183/255, alpha: 1)
     }
     
-    // Adds side menu to view controllers
+    // Adds side menu to view controllers + UI tweaks
     func addSideMenu(menuButton : UIBarButtonItem!) {
         if self.revealViewController() != nil {
             menuButton.target = self.revealViewController()
@@ -91,5 +91,10 @@ extension UIViewController {
 //        }
         
     }
+}
 
+// Add method to SearchResultsTableViewController to delete error
+extension SearchResultsTableViewController : UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    }
 }

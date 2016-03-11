@@ -1,8 +1,8 @@
 //
-//  ProfileViewController.swift
-//  hitch
+//  FAQViewController.swift
+//  transit
 //
-//  Created by Toby Applegate on 21/12/2015.
+//  Created by Toby Applegate on 10/03/2016.
 //  Copyright © 2015 Toby Applegate. All rights reserved.
 //
 
@@ -19,13 +19,10 @@ class FAQViewController: UIViewController{
 
         // Used to display side menu (using SWRevealViewController)
         self.addSideMenu(menuButton)
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-        
     }
     
 }

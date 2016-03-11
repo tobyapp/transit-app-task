@@ -70,7 +70,51 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crE-kW-Chi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1470" y="661"/>
+            <point key="canvasLocation" x="2214" y="637"/>
+        </scene>
+        <!--Provider Information Table View Controller-->
+        <scene sceneID="54J-eg-N0t">
+            <objects>
+                <tableViewController id="MFu-JJ-jfF" customClass="ProviderInformationTableViewController" customModule="transit" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Rnj-Wq-iwC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="vLx-rk-a2s" detailTextLabel="0fR-RS-ua8" style="IBUITableViewCellStyleSubtitle" id="lu4-Yv-jNH">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lu4-Yv-jNH" id="Amh-qG-hBl">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vLx-rk-a2s">
+                                            <rect key="frame" x="15" y="6" width="31.5" height="19.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0fR-RS-ua8">
+                                            <rect key="frame" x="15" y="25.5" width="40.5" height="13.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="MFu-JJ-jfF" id="jOP-Ob-yCA"/>
+                            <outlet property="delegate" destination="MFu-JJ-jfF" id="97T-rV-UUL"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rmB-B8-Soh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1470" y="637"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -85,28 +129,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Du0-Ws-BYn" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="N5R-4J-VY1">
-                                <rect key="frame" x="20" y="72" width="560" height="29"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <segments>
-                                    <segment title="Map"/>
-                                    <segment title="Provider Details"/>
-                                </segments>
-                                <color key="tintColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="2sV-QR-FLf"/>
-                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="7fa-3E-fZK"/>
-                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="centerX" secondItem="N5R-4J-VY1" secondAttribute="centerX" id="9YK-jv-pQW"/>
-                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="top" secondItem="N5R-4J-VY1" secondAttribute="bottom" constant="8" symbolic="YES" id="9qc-CI-OYl"/>
-                            <constraint firstItem="N5R-4J-VY1" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="DZb-AW-Zfb"/>
-                            <constraint firstAttribute="trailing" secondItem="Du0-Ws-BYn" secondAttribute="trailing" id="emr-PK-2jg"/>
-                            <constraint firstItem="N5R-4J-VY1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="kEG-5x-WXM"/>
+                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2uE-ag-OeJ"/>
+                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="IxP-y6-kQa"/>
+                            <constraint firstItem="Du0-Ws-BYn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="K9w-TT-kaS"/>
+                            <constraint firstAttribute="trailing" secondItem="Du0-Ws-BYn" secondAttribute="trailing" id="zgm-rQ-uVA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZQ7-9m-DRt">
@@ -116,8 +148,7 @@
                         <outlet property="mapView" destination="Du0-Ws-BYn" id="4xA-PF-y3x"/>
                         <outlet property="menuButton" destination="3ge-sm-H8D" id="0jm-7Q-1Q4"/>
                         <outlet property="searchDisplayController" destination="Zbc-3t-MOk" id="pFs-MS-MN9"/>
-                        <outlet property="segmentControl" destination="N5R-4J-VY1" id="tBS-4e-aFp"/>
-                        <segue destination="JV1-Hu-aI5" kind="show" identifier="providerSegue" action="showDetailViewController:sender:" id="Ufg-wR-dDm"/>
+                        <segue destination="MFu-JJ-jfF" kind="show" identifier="segueToProviderInfoTableVC" id="2al-pz-abC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -131,34 +162,6 @@
                 </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1470" y="1399"/>
-        </scene>
-        <!--Table View Controller-->
-        <scene sceneID="MQY-w6-Uvz">
-            <objects>
-                <tableViewController id="JV1-Hu-aI5" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="MXf-Lz-3wP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ulh-vG-xUS">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ulh-vG-xUS" id="Xe8-Lm-F8Y">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="JV1-Hu-aI5" id="39X-Sw-QNs"/>
-                            <outlet property="delegate" destination="JV1-Hu-aI5" id="c38-Fy-Nhl"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JTY-cT-SPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2426" y="1399"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="niF-jg-ZDv">
@@ -321,15 +324,9 @@
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
-                                <string key="text">Welcome to Hitch!
+                                <mutableString key="text">Welcome to Transit App!
 
-The purpose of this application is to provide backpackers a way of traveling and meeting other like minded individuals for (next to) nothing!
-
-By using this application, YOU are encouraging and experiencing the way of the hitchhiker, a once forgotten means of transportation, revamped for the 21st century! 
-
-To use this app, all you have to do is to go to the map section, click on the map, search where you want to go and state weather you are hitch'n there or driving! No sit back, grab a beer (or wine) and wait to see who else gets in contact with you! 
-
-On a spontaneous adventure and not sure where you want to go? Then just click either the 'Show Driving Routes..' or the 'Show Hitch’n Routes..' to see where others are going! Click on the route and pop the person a message! You never know, you may just experience the trip of a life time..</string>
+The purpose of this application is parse the contents of the JSON file containing the routes and display them!  From the map page, you can search for a route using the search bar (will always return the same results - from the JSON)!  Select a route and it will be shown on screen! Click any of the markers to highlight that section of the route and to get extra information about that section of the route!  You may also select the 'book' icon in the top right next to the search bar to display any extra information (if any) about that route or provider!  You got no excuse for getting lost in Berlin now..</mutableString>
                                 <color key="textColor" red="0.4039215686" green="0.2274509804" blue="0.71764705880000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
@@ -337,10 +334,10 @@ On a spontaneous adventure and not sure where you want to go? Then just click ei
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ZjB-PA-ryT" firstAttribute="top" secondItem="dlw-1B-3G9" secondAttribute="bottom" constant="8" symbolic="YES" id="0Fs-u6-37s"/>
-                            <constraint firstItem="ZjB-PA-ryT" firstAttribute="leading" secondItem="HHw-vF-0y4" secondAttribute="leadingMargin" id="JUv-q8-YqO"/>
-                            <constraint firstAttribute="bottom" secondItem="ZjB-PA-ryT" secondAttribute="bottom" constant="20" symbolic="YES" id="Wj8-T8-awv"/>
-                            <constraint firstItem="ZjB-PA-ryT" firstAttribute="trailing" secondItem="HHw-vF-0y4" secondAttribute="trailingMargin" id="o1N-Gm-hL1"/>
+                            <constraint firstAttribute="bottom" secondItem="ZjB-PA-ryT" secondAttribute="bottom" constant="20" symbolic="YES" id="e2E-y5-Tzf"/>
+                            <constraint firstItem="ZjB-PA-ryT" firstAttribute="trailing" secondItem="HHw-vF-0y4" secondAttribute="trailingMargin" id="mYz-Ih-R5K"/>
+                            <constraint firstItem="ZjB-PA-ryT" firstAttribute="top" secondItem="dlw-1B-3G9" secondAttribute="bottom" constant="8" symbolic="YES" id="pUq-jZ-Se5"/>
+                            <constraint firstItem="ZjB-PA-ryT" firstAttribute="leading" secondItem="HHw-vF-0y4" secondAttribute="leadingMargin" id="r22-FH-keQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="FAQ" id="dSo-hn-geK">

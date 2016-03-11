@@ -6,6 +6,8 @@
 //  Copyright © 2016 Toby Applegate. All rights reserved.
 //
 
+// VC to display google maps and to show routes selected etc
+
 import UIKit
 import GoogleMaps
 import SVGKit
@@ -18,12 +20,11 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
     var routePath: GMSPolyline? // Var to store last plooted route
     var searchResultsController: UISearchController? = nil
     var plottedByRoute = false
+    var providerInformationJSON: JSON?
     
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
-    
-    @IBOutlet weak var segmentControl: UISegmentedControl!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,12 +33,18 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         
         self.view.backgroundColor = purple
         
+        // Add bar button to nav bar
+        let providerButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Bookmarks, target: self, action: "showProviderInformation")
+        navigationItem.rightBarButtonItem = providerButton
+        
+        // Initalize search table VC
         let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("SearchResultsTableViewController") as! SearchResultsTableViewController
         searchResultsController = UISearchController(searchResultsController: locationSearchTable)
         searchResultsController?.searchResultsUpdater = locationSearchTable
         
         locationSearchTable.passDataDelegate = self
         
+        // Set properties fo search bar
         let searchBar = searchResultsController!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Enter Location"
@@ -52,10 +59,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         // position map camera
         let position = CLLocationCoordinate2DMake(52.5243700, 13.4105300)
         mapView.camera = GMSCameraPosition(target: position, zoom: 14, bearing: 0, viewingAngle: 0)
-        
-        
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // Function to parse JSON data
     func parseJSON(data: JSON) {
         
         // Dict to hold all the information
@@ -63,7 +73,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         
         // Iterate through differernt locations (segments) per route
         for (_, locations) in data {
-            
+
             let polyline = locations["polyline"].stringValue
             let lineColor = locations["color"].stringValue
             let travelMode = locations["travel_mode"].stringValue
@@ -89,19 +99,12 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
                 markerInfoDict["iconUrl"] = iconUrl
                 markerInfoDict["dateTime"] = dateTime
                 
-                // obtian coords for marker place marker on map
+                // obtian coords for marker and place marker on map
                 let markerLocation = CLLocationCoordinate2D(latitude: lat, longitude: lng)
                 placeMarker(markerLocation, markerInfo: markerInfoDict)
-
             }
         }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     // Places marker on map from JSON
     func placeMarker(coordinate: CLLocationCoordinate2D, markerInfo: [String: String]) {
@@ -134,15 +137,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         task.resume()
     }
     
-    // executes when user taps custom window info above marker
-    func mapView(mapView: GMSMapView, didTapInfoWindowOfMarker marker: GMSMarker) {
-        print("touched")
-        
-        performSegueWithIdentifier("providerSegue", sender: nil)
-
-    }
     
-    // Draws route on map (colour changes depending on user type)
+    // Draws route on map (color changes depending if selected by user)
     func drawRoute(route: String, lineColor: String) {
         let path: GMSPath = GMSPath(fromEncodedPath: route)!
         let routePolyline = GMSPolyline(path: path)
@@ -193,7 +189,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         infoWindow.infoLabel.text = "\(travelMode) to \(locaitonName) @ \(formattedDate)"
             
         return infoWindow
-        
     }
 
     // format time and date from JSON
@@ -217,6 +212,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
     // Called when user tapps the map (but not on a marker)
     func mapView(mapView: GMSMapView, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
         
+        // If rotue highlighted by user, remove highlight
         if plottedByRoute {
             removeHighlight()
             plottedByRoute = false
@@ -224,7 +220,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
 
         let currentZoom = self.mapView.camera.zoom
         mapView.camera = GMSCameraPosition(target: coordinate, zoom: currentZoom, bearing: 0, viewingAngle: 0)
-        
     }
     
     // Removes highlighted polyline
@@ -235,15 +230,37 @@ class MapViewController: UIViewController, GMSMapViewDelegate, PassDataProtocol 
         }
     }
 
-    // Function from protocol to recieve data from table view containing routes
-    func returnDataFromSearch(data: [String: AnyObject]) {
-        //clear map of previously plotted routes
+    // Function from protocol to recieve data from table view containing routes + provider info
+    func returnDataFromSearch(routeData: [String: AnyObject], providerData: JSON) {
+        
+        // Clear map of previously plotted routes
         mapView.clear()
-        //get JSON from dict
-        let segments = JSON(data["segments"]!)
-        //parse JSON and display routes and markers on map
+        
+        // Get JSON from dict
+        let segments = JSON(routeData["segments"]!)
+        
+        // Parse JSON and display routes and markers on map
         parseJSON(segments)
+        
+        // Set variable to contain JSON about the provider of each route
+        providerInformationJSON = providerData
     }
     
-}
+    // Function to segue to provider info TableVC
+    func showProviderInformation() {
+        performSegueWithIdentifier("segueToProviderInfoTableVC", sender: nil)
+    }
+    
+    // Pass data (JSON) to tableVC
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "segueToProviderInfoTableVC") {
+            if let destinationViewController = segue.destinationViewController as? ProviderInformationTableViewController {
+                if let providerInformationJSON = providerInformationJSON {
+                    destinationViewController.providerJSON = providerInformationJSON
+                }
+            }
+        }
+    }
 
+    
+}
